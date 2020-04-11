@@ -15,8 +15,7 @@ export default function pages() {
           <Button>
             Acessar
           </Button>
-        </Link>
-        
+        </Link> 
       </Card>
     </Container>
   );
