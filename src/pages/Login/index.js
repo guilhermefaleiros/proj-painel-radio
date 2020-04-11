@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Container, Card, Title, Subtitle, Input, Button } from './styles';
+import { Link } from 'react-router-dom';
 
 export default function pages() {
   return (
@@ -10,7 +11,12 @@ export default function pages() {
         <Subtitle>acesse para continuar.</Subtitle>
         <Input placeholder="Usuário"/>
         <Input style={{marginTop: 20}} placeholder="Senha"/>
-        <Button>Acessar</Button>
+        <Link to="/dashboard">
+          <Button>
+            Acessar
+          </Button>
+        </Link>
+        
       </Card>
     </Container>
   );

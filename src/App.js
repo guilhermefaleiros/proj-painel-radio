@@ -1,15 +1,16 @@
 import React from 'react';
-import Dashboard from './pages/Dashboard';
 import GlobalStyle from './styles/GlobalStyle';
 import {Provider} from 'react-redux';
 
 import store from './store';
 
+import Routes from './routes';
+
 function App() {
   return (
     <Provider store={store}>
-      <Dashboard />
-      <GlobalStyle/>
+      <Routes />
+      <GlobalStyle />
     </Provider>
   );
 }
