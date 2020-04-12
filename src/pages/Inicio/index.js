@@ -1,8 +1,15 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import { Container, Title, Card, RowCards, CardTitle, CardSubtitle, Number } from './styles';
-
+import { 
+  Container, 
+  Title, 
+  Card, 
+  RowCards, 
+  CardTitle, 
+  CardSubtitle, 
+  Number 
+} from './styles';
 
 export default function Inicio() {
 
