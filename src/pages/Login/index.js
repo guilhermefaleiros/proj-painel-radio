@@ -1,7 +1,15 @@
 import React from 'react';
 
-import { Container, Card, Title, Subtitle, Input, Button } from './styles';
 import { Link } from 'react-router-dom';
+
+import { 
+  Container, 
+  Card, 
+  Title, 
+  Subtitle, 
+  Input, 
+  Button 
+} from './styles';
 
 export default function pages() {
   return (

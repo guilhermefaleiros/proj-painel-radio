@@ -12,8 +12,18 @@ export function* setOrderRead({payload}){
   yield call(api.put, 'orders', {
     id,
     read: true
-  })
-  yield put(listAllOrders())
+  });
+  yield put(listAllOrders());
 }
 
-export default all([takeLatest('LIST_ALL_ORDERS', listAll), takeLatest('SET_ORDER_READ', setOrderRead )]);
+export function* removeOrder({payload}){
+  const { id } = payload;
+  yield call(api.delete, `/orders/${id}`);
+  yield put(listAllOrders());
+}
+
+export default all([
+  takeLatest('LIST_ALL_ORDERS', listAll),
+  takeLatest('SET_ORDER_READ', setOrderRead),
+  takeLatest('REMOVE_ORDER', removeOrder)
+]);

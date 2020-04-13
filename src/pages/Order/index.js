@@ -1,26 +1,21 @@
-import React, {useState, useEffect} from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { listAllOrders } from '../../store/modules/order/actions'
-import OrderItem from '../../components/OrderItem';
+import React, {useState } from 'react';
+import { useSelector } from 'react-redux';
+import { 
+  Container, 
+  Content, 
+  FadeIn, 
+  ButtonsContainer, 
+  Button 
+} from './styles';
+
 import OrderItemRead from '../../components/OrderItemRead';
-import { Container, Content, FadeIn, ButtonsContainer, Button } from './styles';
+import OrderItem from '../../components/OrderItem';
 
 export default function Order() {
 
   const [selected, setSelected] = useState('novos');
 
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    function listAll(){
-      dispatch(listAllOrders());
-    }
-
-    listAll();
-  }, [dispatch, selected]);
-
-  const itemsStore = useSelector(state => state.order.orders);
-  console.log(itemsStore);
+  const itemsStore = useSelector(state => state.order.items);
 
   return (
     <Container>
@@ -33,16 +28,16 @@ export default function Order() {
         </Button>
       </ButtonsContainer>
         <Content>
-        <FadeIn duration="0.8s" delay="0.2s" >
-          {selected === 'novos' ? itemsStore.filter(item => item.read === false).map(item =>{
-            return <OrderItem data={item} />
-          })
-          :
-          itemsStore.filter(item => item.read === true).map(item =>{
-            return <OrderItemRead data={item} />
-          })
-          }
-        </FadeIn>
+          <FadeIn duration="0.8s" delay="0.2s" >
+            {selected === 'novos' ? itemsStore.filter(item => item.read === false).map(item =>{
+              return <OrderItem data={item} />
+            })
+            :
+            itemsStore.filter(item => item.read === true).map(item =>{
+              return <OrderItemRead data={item} />
+            })
+            }
+          </FadeIn>
         </Content>
     </Container>
   );

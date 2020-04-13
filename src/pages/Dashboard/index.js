@@ -1,11 +1,16 @@
 import React, { useState, useEffect} from 'react';
 
-import { Container, MenuContainer, MenuItem } from './styles';
+import { 
+  Container, 
+  MenuContainer, 
+  MenuItem 
+} from './styles';
+
 import Inicio from '../Inicio';
 import Order from '../Order';
 
 export default function Menu() {
-  const [selected, setSelected] = useState('pedidos');
+  const [selected, setSelected] = useState('inicio');
   const [actualPage, setActualPage] = useState(null);
 
   useEffect(() => {

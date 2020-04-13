@@ -1,6 +1,6 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-
+import React, {useEffect} from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { listAllOrders } from '../../store/modules/order/actions';
 import { 
   Container, 
   Title, 
@@ -13,7 +13,16 @@ import {
 
 export default function Inicio() {
 
-  const items = useSelector(item => item.order.orders);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    function listAll(){
+      dispatch(listAllOrders());
+    }
+    listAll();
+  },[dispatch])
+
+  const items = useSelector(item => item.order.items);
 
   return (
     <Container>
