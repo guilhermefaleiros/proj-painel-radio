@@ -13,7 +13,7 @@ import {
 
 export default function Inicio() {
 
-  const items = useSelector(item => item.order);
+  const items = useSelector(item => item.order.orders);
 
   return (
     <Container>

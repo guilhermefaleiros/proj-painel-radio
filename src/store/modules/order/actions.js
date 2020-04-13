@@ -1,6 +1,13 @@
 export function listAllOrders(){
   return {
-    type: 'LIST_ALL_ORDERS'
+    type: 'LIST_ALL_ORDERS',
+  }
+}
+
+export function listAllOrdersSuccess(payload){
+  return{
+    type: 'LIST_ALL_ORDERS_SUCCESS',
+    payload
   }
 }
 

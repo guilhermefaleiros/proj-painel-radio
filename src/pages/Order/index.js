@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
-import { useSelector } from 'react-redux';
-
+import React, {useState, useEffect} from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { listAllOrders } from '../../store/modules/order/actions'
 import OrderItem from '../../components/OrderItem';
 import OrderItemRead from '../../components/OrderItemRead';
 import { Container, Content, FadeIn, ButtonsContainer, Button } from './styles';
@@ -9,7 +9,18 @@ export default function Order() {
 
   const [selected, setSelected] = useState('novos');
 
-  const itemsStore = useSelector(state => state.order)
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    function listAll(){
+      dispatch(listAllOrders());
+    }
+
+    listAll();
+  }, [dispatch, selected]);
+
+  const itemsStore = useSelector(state => state.order.orders);
+  console.log(itemsStore);
 
   return (
     <Container>

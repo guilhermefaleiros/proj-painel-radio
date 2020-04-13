@@ -49,7 +49,7 @@ export default function OrderItem(props) {
       <TextPlace>
         <AuthorDateContainer>
           <Author>
-            {props.data.author}
+            {props.data.title}
           </Author>
           <Date>
             {props.data.date}
