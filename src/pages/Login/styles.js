@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Input, Form } from '@rocketseat/unform';
 
 export const Container = styled.div`
   height:100%;
@@ -9,7 +10,7 @@ export const Container = styled.div`
   justify-content: center;
 `;
 
-export const Card = styled.div`
+export const Card = styled(Form)`
   width: 450px;
   height: 450px;
   border-radius: 10px;
@@ -23,6 +24,13 @@ export const Card = styled.div`
 
   &:first-child input{
     margin-bottom: 30px;
+  }
+
+  span{
+    color: #F64C75;
+    align-self: center;
+    margin: 0 0 10px;
+    font-weight: bold;
   }
 `;
 
@@ -45,7 +53,7 @@ export const Subtitle = styled.h2`
   margin-bottom: 20px;
 `;
 
-export const Input = styled.input`
+export const InputField = styled(Input)`
   width: 200px;
   height: 30px;
   border-color: rgb(117, 117, 117);

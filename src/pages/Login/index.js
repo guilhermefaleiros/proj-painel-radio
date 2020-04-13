@@ -1,29 +1,48 @@
 import React from 'react';
 
-import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { signInRequest} from '../../store/modules/auth/actions';
 
 import { 
   Container, 
   Card, 
   Title, 
   Subtitle, 
-  Input, 
+  InputField, 
   Button 
 } from './styles';
 
-export default function pages() {
+import * as Yup from 'yup';
+
+const schema = Yup.object().shape({
+  email: Yup
+    .string()
+    .email('Insira um email válid')
+    .required('O email é obrigatório'),
+  password: Yup
+    .string()
+    .required('A senha é obrigatória')
+})
+
+export default function Login() {
+  const dispatch = useDispatch();
+  const loading = useSelector(state => state.auth.loading)
+
+  function handleSubmit({ email, password}){
+    dispatch(signInRequest(email, password));
+  }
+
   return (
     <Container>
-      <Card>
+      <Card schema={schema} onSubmit={handleSubmit}>
         <Title>Bem vindo à Rádio Level 5,</Title>
         <Subtitle>acesse para continuar.</Subtitle>
-        <Input placeholder="Usuário"/>
-        <Input style={{marginTop: 20}} placeholder="Senha"/>
-        <Link to="/dashboard">
-          <Button>
-            Acessar
-          </Button>
-        </Link> 
+        <InputField name="email" placeholder="Usuário"/>
+        <InputField name="password" style={{marginTop: 20}} placeholder="Senha"/>
+        <Button type="submit">
+          {loading ? 'Carregando' : 'Acessar'}
+        </Button>           
       </Card>
     </Container>
   );
