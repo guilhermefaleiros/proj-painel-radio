@@ -8,7 +8,8 @@ import {
   RowCards, 
   CardTitle, 
   CardSubtitle, 
-  Number 
+  Number,
+  FadeIn 
 } from './styles';
 
 export default function Inicio() {
@@ -25,44 +26,46 @@ export default function Inicio() {
   const items = useSelector(item => item.order.items);
 
   return (
-    <Container>
-      <Title>Rádio Level 5</Title>
-      <RowCards>
-        <Card>
-          <CardTitle>
-            Pedidos
-          </CardTitle>
-          <CardSubtitle>
-            Novos
-          </CardSubtitle>
-          <Number>
+    <FadeIn  duration="0.8s" delay="0.2s" >
+      <Container>
+        <Title>Rádio Level 5</Title>
+        <RowCards>
+          <Card>
+            <CardTitle>
+              Pedidos
+            </CardTitle>
+            <CardSubtitle>
+              Novos
+            </CardSubtitle>
+            <Number>
+              {items.filter(item => item.read === false).length}
+            </Number>
+            <CardSubtitle>
+              Novos
+            </CardSubtitle>
+            <Number>
             {items.filter(item => item.read === false).length}
-          </Number>
-          <CardSubtitle>
-            Novos
-          </CardSubtitle>
-          <Number>
-          {items.filter(item => item.read === false).length}
-          </Number>
-        </Card>
-        <Card>
-        <CardTitle>
-            Pedidos
-          </CardTitle>
-          <CardSubtitle>
-            Novos
-          </CardSubtitle>
-          <Number>
-          {items.filter(item => item.read === false).length}
-          </Number>
-          <CardSubtitle>
-            Novos
-          </CardSubtitle>
-          <Number>
-          {items.filter(item => item.read === false).length}
-          </Number>
-        </Card>
-      </RowCards>
-    </Container>
+            </Number>
+          </Card>
+          <Card>
+          <CardTitle>
+              Pedidos
+            </CardTitle>
+            <CardSubtitle>
+              Novos
+            </CardSubtitle>
+            <Number>
+            {items.filter(item => item.read === false).length}
+            </Number>
+            <CardSubtitle>
+              Novos
+            </CardSubtitle>
+            <Number>
+            {items.filter(item => item.read === false).length}
+            </Number>
+          </Card>
+        </RowCards>
+      </Container>
+    </FadeIn>
   );
 }

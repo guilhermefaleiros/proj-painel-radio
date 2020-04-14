@@ -1,4 +1,6 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
+
+import Pages from '../../utils/DashboardPagesKey';
 
 import { 
   Container, 
@@ -8,18 +10,21 @@ import {
 
 import Inicio from '../Inicio';
 import Order from '../Order';
+import Register from '../Register';
 
 export default function Menu() {
-  const [selected, setSelected] = useState('inicio');
+  const [selected, setSelected] = useState(Pages.INITIAL);
   const [actualPage, setActualPage] = useState(null);
 
   useEffect(() => {
     function switchPages(){
       switch(selected){
-        case 'inicio':
-          return <Inicio/>
-        case 'pedidos':
-          return <Order/>;
+        case Pages.INITIAL:
+          return <Inicio />
+        case Pages.ORDER:
+          return <Order />;
+        case Pages.REGISTER:
+          return <Register />
         default:
           return (<div>
             <h1>Hello World</h1>
@@ -32,9 +37,9 @@ export default function Menu() {
   return (
     <Container>
       <MenuContainer>
-        <MenuItem onClick={() => setSelected('inicio')} selected={selected === 'inicio' ? true : false}>Início</MenuItem>
-        <MenuItem  onClick={() => setSelected('cadastros')} selected={selected === 'cadastros' ? true : false}>Cadastros</MenuItem>
-        <MenuItem  onClick={() => setSelected('pedidos')} selected={selected === 'pedidos' ? true : false}>Pedidos</MenuItem>
+        <MenuItem onClick={() => setSelected(Pages.INITIAL)} selected={selected === Pages.INITIAL}>Início</MenuItem>
+        <MenuItem  onClick={() => setSelected(Pages.REGISTER)} selected={selected === Pages.REGISTER}>Cadastros</MenuItem>
+        <MenuItem  onClick={() => setSelected(Pages.ORDER)} selected={selected === Pages.ORDER}>Pedidos</MenuItem>
       </MenuContainer>
       {actualPage}
     </Container>

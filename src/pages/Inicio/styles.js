@@ -1,4 +1,10 @@
-import styled from 'styled-components';
+import styled, {keyframes} from 'styled-components';
+import BaseAnimation from '../../components/BaseAnimationComponent';
+
+const FadeInAnimation = keyframes`  
+  from { opacity: 0; }
+  to { opacity: 1; }
+`;
 
 export const Container = styled.div`
   width: 100%;
@@ -21,6 +27,11 @@ export const RowCards = styled.div`
   justify-content: space-evenly;
   align-items: center;
   width: 100%;
+`;
+
+export const FadeIn = styled(BaseAnimation)`
+  width: 100%;
+  animation-name: ${FadeInAnimation};
 `;
 
 export const Card = styled.div`

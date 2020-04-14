@@ -23,14 +23,14 @@ export function* signIn({ payload }){
     
     history.push('/dashboard')
   } catch (error) {
-    toast.error('Falha na autenticação, verifique seus dados!')
-    yield put(signFailure())
+    toast.error('Falha na autenticação, verifique seus dados!');
+    yield put(signFailure());
   }
  
 }
 
 export function setToken({ payload }){
-  console.log('EAE')
+
   if(!payload) return;
 
   const { token } = payload.auth;
