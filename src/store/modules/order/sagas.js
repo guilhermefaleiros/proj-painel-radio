@@ -8,6 +8,7 @@ export function* listAll(){
 }
 
 export function* setOrderRead({payload}){
+  console.log('eae');
   const { id } = payload;
   yield call(api.put, 'orders', {
     id,

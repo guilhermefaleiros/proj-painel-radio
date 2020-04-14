@@ -9,6 +9,7 @@ export const Container = styled.div`
   margin-bottom: 20px;
   display: flex;
   flex-direction: row;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 0px 4px 1px;
 `;
 
 export const Author = styled.h1`
@@ -79,6 +80,10 @@ export const ReadButton = styled.button`
 export const ButtonText = styled.span`
   font-size: 18px;
   color: rgb(67, 111, 120);
+`;
+
+export const ModalWrapper=  styled.div`
+  background: linear-gradient(0deg, rgb(34, 165, 213) 0%, rgb(35, 223, 150) 96%);
 `;
 
 export const DeleteButton = styled.button`

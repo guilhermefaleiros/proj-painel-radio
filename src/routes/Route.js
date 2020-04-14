@@ -3,8 +3,6 @@ import { Redirect, Route } from 'react-router-dom';
 
 import { useSelector } from 'react-redux';
 
-import { store } from '../store/index'; 
-
 export default function RouteWrapper({
   component: Component,
   isPrivate = false,

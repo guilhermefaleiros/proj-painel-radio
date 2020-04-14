@@ -22,7 +22,8 @@ import {
   ButtonsContainer,
   ReadButton,
   DeleteButton,
-  ButtonText
+  ButtonText,
+  ModalWrapper
 } from './styles';
 
 import { MdDoneAll, MdDelete } from 'react-icons/md';
@@ -92,20 +93,22 @@ export default function OrderItem(props) {
         onClose={() => setOpen(false)}
         aria-labelledby="responsive-dialog-title"
       >
-        <DialogTitle id="responsive-dialog-title">{"Deseja realmente excluir este pedido?"}</DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-            Uma vez excluído, esse pedido não poderá ser recuperado.
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={() => setOpen(false)} color="primary">
-            Cancelar
-          </Button>
-          <Button onClick={handleConfirm} color="primary">
-            Confirmar
-          </Button>
-        </DialogActions>
+        <ModalWrapper>
+          <DialogTitle style={{color: '#fff'}} id="responsive-dialog-title">{"Deseja realmente excluir este pedido?"}</DialogTitle>
+          <DialogContent>
+            <DialogContentText style={{color: '#fff'}}>
+              Uma vez excluído, esse pedido não poderá ser recuperado.
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button  onClick={() => setOpen(false)}>
+              <span style={{color: '#fff'}}>Cancelar</span>
+            </Button>
+            <Button style={{color: '#fff !important'}} onClick={handleConfirm}>
+            <span style={{color: '#fff'}}>Confirmar</span>
+            </Button>
+          </DialogActions>
+        </ModalWrapper>
       </Dialog>
     </Container>
   );
