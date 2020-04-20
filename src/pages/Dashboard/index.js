@@ -10,7 +10,7 @@ import {
 
 import Inicio from '../Inicio';
 import Order from '../Order';
-import Register from '../Register';
+import Promotion from '../Promotion';
 
 export default function Menu() {
   const [selected, setSelected] = useState(Pages.INITIAL);
@@ -24,7 +24,7 @@ export default function Menu() {
         case Pages.ORDER:
           return <Order />;
         case Pages.REGISTER:
-          return <Register />
+          return <Promotion />
         default:
           return (<div>
             <h1>Hello World</h1>

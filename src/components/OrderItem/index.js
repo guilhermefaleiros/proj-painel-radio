@@ -104,7 +104,7 @@ export default function OrderItem(props) {
             <Button  onClick={() => setOpen(false)}>
               <span style={{color: '#fff'}}>Cancelar</span>
             </Button>
-            <Button style={{color: '#fff !important'}} onClick={handleConfirm}>
+            <Button onClick={handleConfirm}>
             <span style={{color: '#fff'}}>Confirmar</span>
             </Button>
           </DialogActions>

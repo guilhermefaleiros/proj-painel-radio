@@ -39,7 +39,7 @@ export default function Login() {
         <Title>Bem vindo à Rádio Level 5,</Title>
         <Subtitle>acesse para continuar.</Subtitle>
         <InputField name="email" placeholder="Usuário"/>
-        <InputField name="password" style={{marginTop: 20}} placeholder="Senha"/>
+        <InputField type="password" name="password" style={{marginTop: 20}} placeholder="Senha"/>
         <Button type="submit">
           {loading ? 'Carregando' : 'Acessar'}
         </Button>           

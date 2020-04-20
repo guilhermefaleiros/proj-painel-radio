@@ -1,6 +1,7 @@
 import { all, takeLatest, put, call } from 'redux-saga/effects';
 import { listAllOrdersSuccess, listAllOrders } from './actions';
 import api from '../../../services/api';
+import { toast } from 'react-toastify';
 
 export function* listAll(){
   const response = yield call(api.get, 'orders');
@@ -8,7 +9,6 @@ export function* listAll(){
 }
 
 export function* setOrderRead({payload}){
-  console.log('eae');
   const { id } = payload;
   yield call(api.put, 'orders', {
     id,
@@ -18,9 +18,15 @@ export function* setOrderRead({payload}){
 }
 
 export function* removeOrder({payload}){
-  const { id } = payload;
-  yield call(api.delete, `/orders/${id}`);
-  yield put(listAllOrders());
+  try{
+    const { id } = payload;
+    yield call(api.delete, `/orders/${id}`);
+    
+    yield put(listAllOrders());
+    
+  } catch(e){
+
+  }
 }
 
 export default all([
