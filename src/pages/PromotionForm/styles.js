@@ -1,8 +1,19 @@
-import styled from 'styled-components';
+import styled, {keyframes} from 'styled-components';
 
 import { Form, Input, Textarea } from '@rocketseat/unform';
 
 import { KeyboardDatePicker } from '@material-ui/pickers';
+
+import BaseAnimation from '../../components/BaseAnimationComponent';
+
+const FadeInAnimation = keyframes`  
+  from { opacity: 0; }
+  to { opacity: 1; }
+`;
+
+export const FadeIn = styled(BaseAnimation)`
+  animation-name: ${FadeInAnimation};
+`;
 
 export const Container = styled.div`
   width: 100%;

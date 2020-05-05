@@ -4,10 +4,12 @@ import {
   Container, 
   Content, 
   ButtonsContainer, 
-  Button 
+  Button,
+  FadeIn
 } from './styles';
 
 import PromotionForm from '../PromotionForm';
+import PromotionList from '../PromotionList';
 
 export default function Order() {
 
@@ -23,11 +25,13 @@ export default function Order() {
           Promoções
         </Button>
       </ButtonsContainer>
-        <Content>
-          {
-            selected === 'new' ? <PromotionForm/> : <div></div>
-          }
-        </Content>
+        <FadeIn>
+          <Content>
+            {
+              selected === 'new' ? <PromotionForm /> : <PromotionList />
+            }
+          </Content>
+        </FadeIn>
     </Container>
   );
 }
