@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { listAllOrders } from '../../store/modules/order/actions';
+import { listAllPromotions } from '../../store/modules/promotions/actions';
 import { 
   Container, 
   Title, 
@@ -19,6 +20,7 @@ export default function Inicio() {
   useEffect(() => {
     function listAll(){
       dispatch(listAllOrders());
+      dispatch(listAllPromotions());
     }
     listAll();
   },[dispatch])

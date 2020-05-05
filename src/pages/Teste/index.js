@@ -4,6 +4,8 @@ import React from 'react';
 
 export default function Teste() {
   return (
-    <div />
+    <div>
+      <h1>Opa</h1>
+    </div>
   );
 }

@@ -17,13 +17,18 @@ export default function Order() {
 
   const itemsStore = useSelector(state => state.order.items);
 
+  const handleSelected = (key) => {
+    setSelected(key)
+    window.scroll({top: 0, left: 0, behavior: 'smooth' })
+  }
+
   return (
     <Container>
       <ButtonsContainer>
-        <Button onClick={() => setSelected('novos')} selected={selected === 'novos' ? true : false} >
+        <Button onClick={() => handleSelected('novos')} selected={selected === 'novos' ? true : false} >
           Novos
         </Button>
-        <Button onClick={() => setSelected('lidos')} selected={selected === 'lidos' ? true: false}>
+        <Button onClick={() => handleSelected('lidos')} selected={selected === 'lidos' ? true: false}>
           Lidos
         </Button>
       </ButtonsContainer>

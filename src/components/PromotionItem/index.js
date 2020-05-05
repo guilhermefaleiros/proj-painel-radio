@@ -28,6 +28,7 @@ import {
 } from './styles';
 
 import { MdDoneAll, MdDelete, MdEdit } from 'react-icons/md';
+import history from '../../services/history';
 
 export default function OrderItem(props) {
 
@@ -45,10 +46,11 @@ export default function OrderItem(props) {
 
   }
   
-  let date = new window.Date(props.data.date);
+  let date = new window.Date(props.data.createdAt);
   let year = date.getFullYear();
   let month = date.getMonth()+1;
   let dt = date.getDate();
+  let minutes;
 
   if (dt < 10) {
     dt = '0' + dt;
@@ -56,9 +58,15 @@ export default function OrderItem(props) {
   if (month < 10) {
     month = '0' + month;
   }
+  if(date.getMinutes() < 10){
+    minutes = '0' + date.getMinutes()
+  }
+  else{
+    minutes = date.getMinutes()
+  }
 
   const day =  dt+'/' + month + '/'+ year;
-  const hour = date.getHours() + ":" + date.getMinutes();
+  const hour = date.getHours() + ":" + minutes;
   
 
   return (
@@ -73,7 +81,7 @@ export default function OrderItem(props) {
           </Date>
         </AuthorDateContainer>
         <TextPrincipal>
-        {props.data.text}
+        {props.data.description}
         </TextPrincipal>
       </TextPlace>
       <ButtonsContainer>
@@ -81,7 +89,7 @@ export default function OrderItem(props) {
           <MdDoneAll size={15} color="rgb(67, 111, 120)"/>
           <ButtonText>Sortear</ButtonText>
         </ReadButton>
-        <EditButton>
+        <EditButton onClick={() => history.push('/dashboard/cadastros/1/edit')}>
           <MdEdit size={15} color="rgb(67, 111, 120)"/>
           <ButtonText>Editar</ButtonText>
         </EditButton>

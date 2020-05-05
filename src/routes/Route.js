@@ -19,6 +19,6 @@ export default function RouteWrapper({
   }
 
   return (
-    <Route {...rest} component={Component}/>
+    <Route exact {...rest} component={Component}/>
   )
 }

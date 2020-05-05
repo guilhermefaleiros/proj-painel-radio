@@ -1,22 +1,24 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
 import { Container, FadeIn, Content } from './styles';
 import PromotionItem from '../../components/PromotionItem';
 
-export default function PromotionList() {
+export default function PromotionList(props) {
 
-  const [editMode, setEditMode] = useState(true);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch()
+  })
 
   return (
     <FadeIn duration="0.8s" delay="0.2s" >
       <Container>
-        { editMode ?
-        (<Content>
-          <PromotionItem data={{}} />
-          <PromotionItem data={{}} />
-          <PromotionItem data={{}} />
-        </Content>) : <div>Oi</div>
-        }
+        <Content>
+          {props.data.map(item => {
+            return <PromotionItem data={item} /> 
+          })}
+        </Content>
       </Container>
     </FadeIn>
     

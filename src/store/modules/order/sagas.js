@@ -25,7 +25,7 @@ export function* removeOrder({payload}){
     yield put(listAllOrders());
     
   } catch(e){
-
+      toast.error("Não foi possível excluir este pedido")
   }
 }
 
