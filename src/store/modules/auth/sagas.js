@@ -9,7 +9,6 @@ import {signInSuccess, signFailure } from './actions';
 export function* signIn({ payload }){
   try {
     const { email, password } = payload;
-    console.log(payload);
   
     const response = yield call(api.post, 'sessions', {
       email, password
@@ -40,8 +39,13 @@ export function setToken({ payload }){
   }
 }
 
+export function signOut(){
+  history.push('/')
+}
+
 
 export default all([
   takeLatest('persist/REHYDRATE', setToken),
-  takeLatest('SIGN_IN_REQUEST', signIn)
+  takeLatest('SIGN_IN_REQUEST', signIn),
+  takeLatest('SIGN_OUT', signOut),
 ]);

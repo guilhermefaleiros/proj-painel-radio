@@ -8,7 +8,7 @@ export default function PromotionList(props) {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch()
+    
   })
 
   return (

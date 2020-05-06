@@ -1,11 +1,22 @@
 import { all, takeLatest, put, call } from 'redux-saga/effects';
 import { listAllOrdersSuccess, listAllOrders } from './actions';
+import { signOut } from '../auth/actions'
 import api from '../../../services/api';
 import { toast } from 'react-toastify';
 
 export function* listAll(){
-  const response = yield call(api.get, 'orders');
-  yield put(listAllOrdersSuccess(response.data));
+  try{
+    const response = yield call(api.get, 'orders');
+
+    if(response.data.status){
+      yield put(signOut())
+      return toast.info("Sua sessão foi expirada, logue novamente para continuar navegando!")
+    }
+
+    yield put(listAllOrdersSuccess(response.data));
+  } catch(e){
+    toast.error('Falha na comunicação com o servidor!')
+  }
 }
 
 export function* setOrderRead({payload}){
@@ -20,12 +31,17 @@ export function* setOrderRead({payload}){
 export function* removeOrder({payload}){
   try{
     const { id } = payload;
-    yield call(api.delete, `/orders/${id}`);
+    const response = yield call(api.delete, `/orders/${id}`);
+
+    if(response.data){
+      yield put(signOut())
+      return toast.info("Sua sessão foi expirada, logue novamente para continuar navegando!")
+    }
     
     yield put(listAllOrders());
     
   } catch(e){
-      toast.error("Não foi possível excluir este pedido")
+    toast.error("Não foi possível excluir este pedido")
   }
 }
 
